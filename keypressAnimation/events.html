@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Animations using keyboard events</title>
+    </head>
+    <body style="background-color:black;">
+        <script type="text/javascript">
+        
+        document.onkeydown = animateKeys;
+        
+        var colors = ["#ff0000", "#ff8500", "#6db300", "#6db3d5", "#780335", "#785d7a", "#2e5d7a", "#eff815", "#10427a"];
+            
+        function animateKeys (event) {
+            var keyCode = event.keyCode;
+            var c = "Javascript";//can change here to say "string words" String.fromCharCode(keyCode);<---copy&paste this to make random
+            
+            var key = document.createElement('div');
+            document.body.appendChild(key);
+            
+            key.style.position = "absolute";
+            
+            var randX = Math.round(Math.random() * window.innerWidth);
+            var randY = Math.round(Math.random() * window.innerHeight);
+            
+            key.style.left = randX + 'px';
+            key.style.top = randY + 'px';
+            key.innerText = c;
+            
+            var color = colors[Math.floor(Math.random() * colors.length)];
+            key.style.color = color;
+            
+            key.style.transition = "all 0.5s linear 0s";
+            key.style.left = key.offsetLeft - 30 +"px";
+            key.style.top = key.offsetTop - 30 + 'px';
+            key.style.fontSize = "400px";
+            key.style.opacity = 0;
+            
+            var sound = new Audio();
+            sound.src = "resources/bass.mp3"; //can change this with other mp3 sounds there is another in the resources folder called "keypress.mp3"
+            sound.play();
+        }
+        </script>   
+    </body>
+</html>
